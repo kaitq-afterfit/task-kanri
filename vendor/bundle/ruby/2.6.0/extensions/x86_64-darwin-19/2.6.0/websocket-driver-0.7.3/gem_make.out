@@ -1,0 +1,19 @@
+current directory: /Users/tq.khai/dev/af-proj/shanai-intra/practice/task-kanri/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+/Users/tq.khai/.rbenv/versions/2.6.3/bin/ruby -I /Users/tq.khai/.rbenv/versions/2.6.3/lib/ruby/2.6.0 -r ./siteconf20201116-56390-160m7tm.rb extconf.rb
+creating Makefile
+
+current directory: /Users/tq.khai/dev/af-proj/shanai-intra/practice/task-kanri/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/tq.khai/dev/af-proj/shanai-intra/practice/task-kanri/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+ld: warning: directory not found for option '-L/usr/local/opt/zlib/lib'
+ld: warning: directory not found for option '-L/usr/local/opt/sqlite/lib'
+ld: warning: directory not found for option '-L/usr/local/opt/zlib/lib'
+ld: warning: directory not found for option '-L/usr/local/opt/sqlite/lib'
+
+current directory: /Users/tq.khai/dev/af-proj/shanai-intra/practice/task-kanri/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.3/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.bundle ./.gem.20201116-56390-lt9ffk
