@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_date: 2020-11-17 14:41:39
+  due_date: 2020-11-17 14:41:39
+  description: MyString
+  status: MyString
+  user: one
+
+two:
+  name: MyString
+  start_date: 2020-11-17 14:41:39
+  due_date: 2020-11-17 14:41:39
+  description: MyString
+  status: MyString
+  user: two
