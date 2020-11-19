@@ -1,3 +1,4 @@
+<!--
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "タスク管理", root_path, id: "logo" %>
@@ -24,5 +25,32 @@
         <% end %>
       </ul>
     </nav>
+  </div>
+</header>
+-->
+
+<header class="navbar navbar-top">
+  <div class="header-section">
+    <div class="top-bar-block left col-md-4">
+      <div class="home-icon-block">
+        <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-home fa-lg'), class: 'btn')), root_path %>
+      </div>
+      <div class="search-form-wrapper">
+        <form id="search-form">
+          <input type="text" id="search-input" />
+          <input type="submit" id="search-submit" value="&#xf002" class="fa fa-search" />
+        </form>
+      </div>
+    </div>
+    <div class="top-bar-block center col-md-4">
+      <%= link_to (content_tag(:button, content_tag(:i, ' タスク管理', class: 'fab fa-trello fa-lg'), class: 'btn')), root_path %>
+    </div>
+    <div class="top-bar-block right col-md-4">
+      <div class="user-settings-block">
+        <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-info-circle'), class: 'btn')), root_path %>
+        <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-bell'), class: 'btn')), root_path %>
+        <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-user-circle'), class: 'btn')), root_path %>
+      </div>
+    </div>
   </div>
 </header>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tasks/index'
+  get 'task/index'
   root to: 'static_pages#home'
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
