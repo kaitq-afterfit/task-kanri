@@ -2,16 +2,14 @@
 <html>
   <head>
     <title>TaskKanri</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/rails_default' %>
+    <%= render 'layouts/shim' %>
+    <%= render 'layouts/meta' %>
   </head>
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
+    <div class="main-container">
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>

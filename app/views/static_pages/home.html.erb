@@ -1,9 +1,194 @@
+<!--
 <div class="center jumbotron">
     <h1>Welcome to the Task Management App</h1>
-
-    <h2>
-        This is the home page!
-    </h2>
-
+    <h2>This is the home page!</h2>
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div>
+-->
+
+<div class="body-section">
+  <div class="tasks-list-wrapper col-md-8">
+    <div class="tasks-list">
+      <div class="tasks-list-heading"><span>To Do</span></div>
+      <div class="tasks-list-body" id="todo">
+        <ul id="todo-list">
+          <li>
+            <div class="task-block" id="todo-test-1">
+              <div class="task-name-block">
+                <div class="task-name">Corporate Logo 1</div>
+                <div class="task-edit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="task-info-block">
+                <div class="task-detail">
+                  <div class="task-date">21 Apr</div>
+                  <div class="task-labels">
+                    <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                    <span><small>3</small></span>
+                  </div>
+                </div>
+                <div class="task-owner">
+                  <div class="user-email">owner1@gmail.com</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="task-block" id="todo-test-1">
+              <div class="task-name-block">
+                <div class="task-name">Corporate Logo 2</div>
+                <div class="task-edit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="task-info-block">
+                <div class="task-detail">
+                  <div class="task-date">21 Apr</div>
+                  <div class="task-labels">
+                    <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                    <span><small>2</small></span>
+                  </div>
+                </div>
+                <div class="task-owner">
+                  <div class="user-email">owner2@gmail.com</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="task-block" id="todo-test-1">
+              <div class="task-name-block">
+                <div class="task-name">Corporate Logo 3</div>
+                <div class="task-edit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="task-info-block">
+                <div class="task-detail">
+                  <div class="task-date">21 Apr</div>
+                  <div class="task-labels">
+                    <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                    <span><small>1</small></span>
+                  </div>
+                </div>
+                <div class="task-owner">
+                  <div class="user-email">owner3@gmail.com</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="tasks-list-footer">
+        <button class="add-task-btn btn">
+          <i class="fas fa-plus"></i>
+          Add a task...
+        </button>
+      </div>
+    </div>
+    <div class="tasks-list">
+      <div class="tasks-list-heading"><span>Doing</span></div>
+      <div class="tasks-list-body" id="doing">
+        <ul id="doing-tasks-list">
+          <li>
+            <div class="task-block" id="doing-task-test">
+              <div class="task-name-block">
+                <div class="task-name">Brochure Design</div>
+                <div class="task-edit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="task-info-block">
+                <div class="task-detail">
+                  <div class="task-date">1 Nov</div>
+                  <div class="task-labels">
+                    <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                    <span><small>4</small></span>
+                  </div>
+                </div>
+                <div class="task-owner">
+                  <div class="user-email">user@test.com</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="tasks-list-footer">
+        <button class="add-task-btn btn">
+          <i class="fas fa-plus"></i>
+          Add a task...
+        </button>
+      </div>
+    </div>
+    <div class="tasks-list">
+      <div class="tasks-list-heading"><span>Done</span></div>
+      <div class="tasks-list-body" id="done">
+        <ul id="done-tasks-list">
+          <li>
+            <div class="task-block" id="done-tasks-test-1">
+              <div class="task-name-block">
+                <div class="task-name">Artwork Design 1</div>
+                <div class="task-edit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="task-info-block">
+                <div class="task-detail">
+                  <div class="task-date">16 Mar</div>
+                  <div class="task-labels">
+                    <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                    <span><small>1</small></span>
+                  </div>
+                </div>
+                <div class="task-owner">
+                  <div class="user-email">creator2@email.com</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="task-block" id="done-tasks-test-1">
+              <div class="task-name-block">
+                <div class="task-name">Artwork Design 2</div>
+                <div class="task-edit">
+                  <i class="fas fa-edit" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="task-info-block">
+                <div class="task-detail">
+                  <div class="task-date">16 Mar</div>
+                  <div class="task-labels">
+                    <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                    <span><small>2</small></span>
+                  </div>
+                </div>
+                <div class="task-owner">
+                  <div class="user-email">creator1@email.com</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="tasks-list-footer">
+        <button class="add-task-btn btn">
+          <i class="fas fa-plus"></i>
+          Add a task...
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="right-dash-board">
+    <div class="dash-board-wrapper">
+      <div class="dash-board-heading">
+        <div class="heading-wrapper">
+          <div class="heading-icon"><i class="fas fa-stream"></i></div>
+          <div class="heading-title">Activity<small>(高度機能)</small></div>
+        </div>
+      </div>
+      <div class="dash-board-body"></div>
+    </div>
+  </div>
 </div>
