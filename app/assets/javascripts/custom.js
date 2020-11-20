@@ -86,3 +86,6 @@ $(function () {
         },
     });
 });
+
+// $('#task-info-modal').html('#{ escape_javascript(<%= render :file => "tasks/show", locals: {task: @task}) }');
+// $('#task-info-modal').openModal();

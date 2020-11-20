@@ -1,2 +1,133 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<div class="body-section">
+  <div class="tasks-list-wrapper col-md-8">
+    <div class="tasks-list">
+      <div class="tasks-list-heading"><span>To Do</span></div>
+      <div class="tasks-list-body" id="todo">
+        <ul id="todo-list">
+          <% unless @todo_tasks.empty? %>
+            <% @todo_tasks.each do |task| %>
+              <li class="list-items">
+                <%= link_to '#', data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                  <div class="task-block" id="to-do-task_<%= task.id %>">
+                    <div class="task-name-block">
+                      <div class="task-name"><%= task.name %></div>
+                      <div class="task-edit">
+                        <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+                      </div>
+                    </div>
+                    <div class="task-info-block">
+                      <div class="task-detail">
+                        <div class="task-date"><%= task.due_date.strftime("%e %b") %></div>
+                        <div class="task-labels">
+                          <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                          <span><small><%= task.labels.count %></small></span>
+                        </div>
+                      </div>
+                      <div class="task-owner">
+                        <div class="user-email"><%= task.user.email %></div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <%= render partial: 'show_modal', locals: { task: task } %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tasks-list-footer">
+        <button class="add-task-btn btn">
+          <i class="fas fa-plus"></i>
+          Add a task...
+        </button>
+      </div>
+    </div>
+    <div class="tasks-list">
+      <div class="tasks-list-heading"><span>Doing</span></div>
+      <div class="tasks-list-body" id="doing">
+        <ul id="doing-tasks-list">
+          <% unless @doing_tasks.empty? %>
+            <% @doing_tasks.each do |task| %>
+              <li class="list-items">
+                <%= link_to '#', data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                  <div class="task-block" id="doing-task_<%= task.id %>">
+                    <div class="task-name-block">
+                      <div class="task-name"><%= task.name %></div>
+                      <div class="task-edit">
+                        <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+                      </div>
+                    </div>
+                    <div class="task-info-block">
+                      <div class="task-detail">
+                        <div class="task-date"><%= task.due_date.strftime("%e %b") %></div>
+                        <div class="task-labels">
+                          <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                          <span><small><%= task.labels.count %></small></span>
+                        </div>
+                      </div>
+                      <div class="task-owner">
+                        <div class="user-email"><%= task.user.email %></div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <%= render partial: 'show_modal', locals: { task: task } %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tasks-list-footer">
+        <button class="add-task-btn btn">
+          <i class="fas fa-plus"></i>
+          Add a task...
+        </button>
+      </div>
+    </div>
+    <div class="tasks-list">
+      <div class="tasks-list-heading"><span>Done</span></div>
+      <div class="tasks-list-body" id="done">
+        <ul id="done-tasks-list">
+          <% unless @done_tasks.empty? %>
+            <% @done_tasks.each do |task| %>
+              <li class="list-items">
+                <%= link_to task_path(task), data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                  <div class="task-block" id="done-task_<%= task.id %>">
+                    <div class="task-name-block">
+                      <div class="task-name"><%= task.name %></div>
+                      <div class="task-edit">
+                        <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+                      </div>
+                    </div>
+                    <div class="task-info-block">
+                      <div class="task-detail">
+                        <div class="task-date"><%= task.due_date.strftime("%e %b") %></div>
+                        <div class="task-labels">
+                          <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+                          <span><small><%= task.labels.count %></small></span>
+                        </div>
+                      </div>
+                      <div class="task-owner">
+                        <div class="user-email"><%= task.user.email %></div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <%= render partial: 'show_modal', locals: { task: task } %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+      <div class="tasks-list-footer">
+        <button class="add-task-btn btn">
+          <i class="fas fa-plus"></i>
+          Add a task...
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right aside Dashboard -->
+  <%= render 'shared/dash_board' %>
+</div>

@@ -68,9 +68,7 @@ Header Section Styles
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 0.3rem;
     transition: background-color 150ms;
-    .fas {
-      color: black;
-    }
+    color: $gray-darker;
     &:hover {
       background-color: rgba(255, 255, 255, 0.3);
     }
@@ -81,7 +79,7 @@ Header Section Styles
   justify-content: flex-start;
   align-items: center;
   .search-form-wrapper {
-    width: 270px;
+    width: 280px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -124,16 +122,19 @@ Header Section Styles
 
 .top-bar-block.center {
   justify-content: center;
-  .btn {
-    cursor: default;
-    background-color: transparent;
+  .logo-link {
+    text-decoration: none;
+    color: $gray-darker;
+    &:hover {
+      color: white;
+    }
     i {
+      font-size: 20px;
+    }
+    span {
       font-weight: bold;
-      color: black;
-      &:hover {
-        color: white;
-        cursor: pointer;
-      }
+      font-size: 18px;
+      margin-left: 0.1em;
     }
   }
 }
@@ -143,6 +144,18 @@ Header Section Styles
   .user-settings-block {
     .btn {
       margin-left: 5px;
+    }
+  }
+  .log-in-link {
+    text-decoration: none;
+    color: $gray-darker;
+    font-size: 14px;
+    &:hover {
+      color: white;
+    }
+    span {
+      font-weight: bold;
+      margin-left: 0.1em;
     }
   }
 }
@@ -158,9 +171,9 @@ Body Section Styles
 }
 
 .tasks-list-wrapper {
-  padding-left: 5em;
-  padding-right: 5em;
-  margin-right: 3em;
+  padding-left: 4.25em;
+  padding-right: 4.25em;
+  margin-right: 3.75em;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -182,7 +195,7 @@ Body Section Styles
     vertical-align: top;
     white-space: nowrap;
     background-color: #e2e4e6;
-    border-radius: 5px 0px 0px 5px;
+    border-radius: 5px;
     .dash-board-heading {
       font-family: "Lato";
       font-size: 16px;
@@ -233,7 +246,7 @@ Body Section Styles
 }
 
 .tasks-list-body {
-  height: 420px;
+  height: 430px;
   margin-right: 5px;
   margin-left: 10px;
   overflow: auto;
@@ -263,6 +276,23 @@ Body Section Styles
   }
 }
 
+.list-items {
+  a {
+    text-decoration: none;
+    color: $gray-darker;
+    &:hover {
+      .task-name {
+        font-weight: bold;
+      }
+    }
+  }
+  &:hover {
+    .task-block {
+      background-color: rgba(252, 253, 254, 0.75);
+    }
+  }
+}
+
 .task-block {
   background-color: #fff;
   border-bottom: 1px solid #ccc;
@@ -285,6 +315,12 @@ Body Section Styles
 .task-name {
   font-family: "Lato";
   width: 100%;
+}
+
+.task-edit {
+  a:hover {
+    font-size: 12px;
+  }
 }
 
 .task-info-block {
@@ -322,15 +358,6 @@ Body Section Styles
   color: #fff;
   display: inline-block;
   border-radius: 5px;
-}
-
-.edit-task-icon {
-  width: 10px;
-  height: 10px;
-}
-
-.edit-task-icon:hover {
-  opacity: 0.3;
 }
 
 .user-email {
