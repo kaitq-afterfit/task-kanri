@@ -1,6 +1,7 @@
 class LabelsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user
+  before_action :find_label_by_id, only: [:edit, :update]
   before_action :set_search
 
   def index
@@ -24,11 +25,9 @@ class LabelsController < ApplicationController
   end
 
   def edit
-    @label = Label.find(params[:id])
   end
 
   def update
-    @label = Label.find(params[:id])
     if @label.update_attributes(label_params)
       flash[:success] = "Label has been updated!"
       redirect_to labels_url
@@ -38,9 +37,13 @@ class LabelsController < ApplicationController
   end
 
   def destroy
-    Label.find(params[:id]).destroy
-    flash[:success] = "Label deleted successfully!"
-    redirect_back(fallback_location: labels_url)
+    if Label.find(params[:id]).destroy
+      flash[:success] = "Label deleted successfully!"
+      redirect_back(fallback_location: labels_url)
+    else
+      flash[:danger] = "Label deleted fail!"
+      render 'index'
+    end
   end
 
   private
@@ -51,6 +54,10 @@ class LabelsController < ApplicationController
     
     def admin_user
       redirect_to(root_url) unless current_user.is_admin?
+    end
+
+    def find_label_by_id
+      @label = Label.find(params[:id])
     end
 
     def set_search

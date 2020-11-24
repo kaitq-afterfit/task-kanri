@@ -12,15 +12,7 @@
       </thead>
 
       <tbody>
-        <% @labels.each do |label| %>
-          <tr>
-            <td><%= label.name %></td>
-            <td><%= label.description %></td>
-            <td class="action-col-icons"><%= link_to content_tag(:i, '', class: 'fas fa-pen'), edit_label_path(label) %></td>
-            <td class="action-col-icons"><%= link_to content_tag(:i, '', class: 'fas fa-trash'), label, method: :delete,
-                                        data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
+        <%= render @labels %>
       </tbody>
     </table>
     <div class="add-label-block">

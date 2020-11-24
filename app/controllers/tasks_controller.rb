@@ -42,9 +42,13 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    Task.find(params[:id]).destroy
-    flash[:success] = "Task deleted successfully!"
-    redirect_back(fallback_location: tasks_url)
+    if Task.find(params[:id]).destroy
+      flash[:success] = "Task deleted successfully!"
+      redirect_back(fallback_location: tasks_url)
+    else
+      flash.now[:danger] = "Task deleted fail!"
+      render 'index'
+    end
   end
 
   def change_status

@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   
   has_and_belongs_to_many :labels
 
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :assignees, through: :assignments, source: :user
 
   enum status: { todo: 1, doing: 2, done: 3 }

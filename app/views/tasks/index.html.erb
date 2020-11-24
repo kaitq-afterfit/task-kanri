@@ -11,9 +11,11 @@
                   <div class="task-block" id="to-do-task_<%= task.id %>">
                     <div class="task-name-block">
                       <div class="task-name"><%= task.name %></div>
-                      <div class="task-edit">
-                        <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
-                      </div>
+                      <% if current_user == task.user %>
+                        <div class="task-edit">
+                          <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+                        </div>
+                      <% end %>
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">
@@ -55,9 +57,11 @@
                   <div class="task-block" id="doing-task_<%= task.id %>">
                     <div class="task-name-block">
                       <div class="task-name"><%= task.name %></div>
-                      <div class="task-edit">
-                        <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
-                      </div>
+                      <% if current_user == task.user %>
+                        <div class="task-edit">
+                          <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+                        </div>
+                      <% end %>
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">
@@ -91,9 +95,11 @@
                   <div class="task-block" id="done-task_<%= task.id %>">
                     <div class="task-name-block">
                       <div class="task-name"><%= task.name %></div>
-                      <div class="task-edit">
-                        <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
-                      </div>
+                      <% if current_user == task.user %>
+                        <div class="task-edit">
+                          <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+                        </div>
+                      <% end %>
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">

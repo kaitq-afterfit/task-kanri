@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'labels/index'
-  get 'labels/new'
-  get 'labels/create'
-  get 'labels/edit'
-  get 'labels/update'
-  get 'labels/destroy'
   root to: 'static_pages#home'
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
