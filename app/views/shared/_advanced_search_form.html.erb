@@ -1,0 +1,45 @@
+<%= search_form_for @q, id: 'advanced-search-form' do |f| %>
+
+  <%= f.label :name_cont, "Name" %>
+  <%= f.search_field :name_cont %>
+
+  <%= f.label :duration %>
+  <div class="duration-search-block">
+    <%= f.date_field :start_date_gteq, include_blank: true %>
+    <span> 〜 </span>
+    <%= f.date_field :due_date_lteq, include_blank: true %>
+  </div>
+
+  <%= f.label :labels_name_cont, "Label" %>
+  <%= f.search_field :labels_name_cont %>
+
+  <%= f.label :assignee_cont, "Assignees" %>
+  <%= f.search_field :assignee_cont %>
+
+  <%= f.label :user_name_or_user_email_cont, "Owner" %>
+  <%= f.search_field :user_name_or_user_email_cont %>
+
+  <%= f.label :status %>
+  <div class="status-radio-group">
+    <div class="radio-choice-block">
+      <%= f.radio_button :status_eq, '', { :checked => true } %>
+      <span class="choice-title">指定なし</span>
+    </div>
+    <div class="radio-choice-block">
+      <%= f.radio_button :status_eq, 1 %>
+      <span class="choice-title">To Do</span>
+    </div>
+    <div class="radio-choice-block">
+      <%= f.radio_button :status_eq, 2 %>
+      <span class="choice-title">Doing</span>
+    </div>
+    <div class="radio-choice-block">
+      <%= f.radio_button :status_eq, 3 %>
+      <span class="choice-title">Done</span>
+    </div>
+  </div>
+
+  <%= button_tag type: "submit", id: "advanced-search-submit", class: "btn btn-default" do %>
+    検索
+  <% end %>
+<% end %>

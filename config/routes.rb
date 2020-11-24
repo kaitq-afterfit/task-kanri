@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'labels/index'
+  get 'labels/new'
+  get 'labels/create'
+  get 'labels/edit'
+  get 'labels/update'
+  get 'labels/destroy'
   root to: 'static_pages#home'
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
@@ -12,7 +18,9 @@ Rails.application.routes.draw do
     delete 'logout', to: 'users/sessions#destroy'
   end
 
-  resources :users
-  resources :tasks, except: :show
+  resources :users, except: [:index, :show, :destroy]
+  resources :tasks, except: :show do
+    patch 'change_status', on: :collection
+  end
   resources :labels
 end

@@ -5,10 +5,12 @@
         <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-home fa-lg'), class: 'btn')), root_path %>
       </div>
       <div class="search-form-wrapper">
-        <form id="search-form">
-          <input type="text" id="search-input" />
-          <input type="submit" id="search-submit" value="&#xf002" class="fa fa-search" />
-        </form>
+        <%= search_form_for @q, id: 'search-form' do |f| %>
+          <%= f.text_field :name_cont, id: "search-input", placeholder: 'Search by name here ...' %>
+          <%= button_tag type: "submit", id: "search-submit" do %>
+            <i class="fa fa-search"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="top-bar-block center col-md-4">
@@ -20,7 +22,9 @@
     <div class="top-bar-block right col-md-4">
       <% if user_signed_in? %>
         <div class="user-settings-block">
-          <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-user-circle'), class: 'btn')), '#' %>
+          <% if current_user.is_admin? %>
+            <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-cogs'), class: 'btn')), labels_path %>
+          <% end %>
           <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-bell'), class: 'btn')), root_path %>
           <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-sign-out-alt'), class: 'btn')), logout_path, method: :delete %>
         </div>

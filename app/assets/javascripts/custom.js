@@ -1,5 +1,5 @@
 $(function () {
-    $("#todo-list").sortable({
+    $("#todo-tasks-list").sortable({
         connectWith: ["#doing-tasks-list", "#done-tasks-list"],
         over: function (event, ui) {
         //triggered when sortable element hovers sortable list
@@ -29,7 +29,7 @@ $(function () {
 
 $(function () {
     $("#doing-tasks-list").sortable({
-        connectWith: ["#todo-list", "#done-tasks-list"],
+        connectWith: ["#todo-tasks-list", "#done-tasks-list"],
         over: function (event, ui) {
         //triggered when sortable element hovers sortable list
         $("#doing").css("background-color", "rgba(0,0,0,.1)");
@@ -58,7 +58,7 @@ $(function () {
 
 $(function () {
     $("#done-tasks-list").sortable({
-        connectWith: ["#todo-list", "#doing-tasks-list"],
+        connectWith: ["#todo-tasks-list", "#doing-tasks-list"],
         over: function (event, ui) {
         //triggered when sortable element hovers sortable list
         $("#done").css("background-color", "rgba(0,0,0,.1)");
@@ -70,7 +70,7 @@ $(function () {
         receive: function (event, ui) {
         // event is triggered when an item from a connected sortable list has been dropped into another list
         $("#done").css("background-color", "rgba(0,0,0,.0)");
-        var status = "Complete";
+        var status = "Done";
         var orderId = ui.item["0"].firstChild.id;
         },
         revert: 100,
@@ -86,6 +86,3 @@ $(function () {
         },
     });
 });
-
-// $('#task-info-modal').html('#{ escape_javascript(<%= render :file => "tasks/show", locals: {task: @task}) }');
-// $('#task-info-modal').openModal();

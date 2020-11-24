@@ -3,7 +3,7 @@
     <div class="tasks-list">
       <div class="tasks-list-heading"><span>To Do</span></div>
       <div class="tasks-list-body" id="todo">
-        <ul id="todo-list">
+        <ul id="todo-tasks-list">
           <% unless @todo_tasks.empty? %>
             <% @todo_tasks.each do |task| %>
               <li class="list-items">
@@ -36,10 +36,12 @@
         </ul>
       </div>
       <div class="tasks-list-footer">
-        <button class="add-task-btn btn">
-          <i class="fas fa-plus"></i>
-          Add a task...
-        </button>
+        <%= link_to new_task_path, class: 'task-create-link' do %>
+          <button class="add-task-btn btn">
+            <i class="fas fa-plus"></i>
+            Add new task...
+          </button>
+        <% end %>
       </div>
     </div>
     <div class="tasks-list">
@@ -77,12 +79,6 @@
           <% end %>
         </ul>
       </div>
-      <div class="tasks-list-footer">
-        <button class="add-task-btn btn">
-          <i class="fas fa-plus"></i>
-          Add a task...
-        </button>
-      </div>
     </div>
     <div class="tasks-list">
       <div class="tasks-list-heading"><span>Done</span></div>
@@ -118,12 +114,6 @@
             <% end %>
           <% end %>
         </ul>
-      </div>
-      <div class="tasks-list-footer">
-        <button class="add-task-btn btn">
-          <i class="fas fa-plus"></i>
-          Add a task...
-        </button>
       </div>
     </div>
   </div>

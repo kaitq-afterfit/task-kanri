@@ -11,10 +11,15 @@
     <%= f.date_field :due_date, class: 'form-control' %>
 
     <%= f.label :description %>
-    <%= f.text_field :description, class: 'form-control' %>
+    <%= f.text_area :description, class: 'form-control' %>
 
     <%= f.label :status %>
-    <%= f.select :status, { 'To Do': 1, 'Doing': 2, 'Done': 3 }, { class: 'form-control', require: true, selected: f.object.status } %>
+    <%= f.select :status, Task.statuses.keys.to_a, { class: 'form-control', require: true,
+                 include_blank: 'Please select', selected: f.object.status.nil? ? 0 : f.object.status } %>
+    
+    <%= f.label :assignees %>
+    <%= f.select :assignee_ids, User.all.collect { |u| [ u.email, u.id ] }, { class: 'form-control' },
+                 multiple: true %>
 
-    <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>

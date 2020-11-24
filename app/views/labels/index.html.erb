@@ -1,0 +1,30 @@
+<h1>Labels List</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th class="action-col-title" colspan="2">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @labels.each do |label| %>
+          <tr>
+            <td><%= label.name %></td>
+            <td><%= label.description %></td>
+            <td class="action-col-icons"><%= link_to content_tag(:i, '', class: 'fas fa-pen'), edit_label_path(label) %></td>
+            <td class="action-col-icons"><%= link_to content_tag(:i, '', class: 'fas fa-trash'), label, method: :delete,
+                                        data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="add-label-block">
+      <%= link_to 'New label', new_label_path, class: 'btn btn-default add-label-btn' %>
+    </div>
+  </div>
+</div>
