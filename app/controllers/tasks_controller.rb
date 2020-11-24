@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_owner, only: [:edit, :update, :destroy]
   before_action :users_list, only: [:new, :edit]
-  before_action :find_task_by_id, only: [:edit, :update]
+  before_action :find_task_by_id, only: [:edit, :update, :destroy]
   before_action :set_search
 
   def index
@@ -29,8 +29,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @task.update_attributes(task_params)
@@ -42,7 +41,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    if Task.find(params[:id]).destroy
+    if @task.destroy
       flash[:success] = "Task deleted successfully!"
       redirect_back(fallback_location: tasks_url)
     else
@@ -51,9 +50,7 @@ class TasksController < ApplicationController
     end
   end
 
-  def change_status
-    # 高度機能
-  end
+  def change_status; end
 
   private
 

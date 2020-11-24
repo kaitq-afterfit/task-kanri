@@ -1,7 +1,7 @@
 class LabelsController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user
-  before_action :find_label_by_id, only: [:edit, :update]
+  before_action :find_label_by_id, only: [:edit, :update, :destroy]
   before_action :set_search
 
   def index
@@ -24,8 +24,7 @@ class LabelsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @label.update_attributes(label_params)
@@ -37,7 +36,7 @@ class LabelsController < ApplicationController
   end
 
   def destroy
-    if Label.find(params[:id]).destroy
+    if @label.destroy
       flash[:success] = "Label deleted successfully!"
       redirect_back(fallback_location: labels_url)
     else
