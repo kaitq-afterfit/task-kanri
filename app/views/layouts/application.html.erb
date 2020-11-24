@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TaskKanri</title>
+    <title>Task Kanri</title>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
     <%= render 'layouts/meta' %>
@@ -9,7 +9,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="main-container">
+    <div class="container-fluid">
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>

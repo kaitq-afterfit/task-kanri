@@ -1,0 +1,25 @@
+<%= form_for(@task) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, class: 'form-control' %>
+
+    <%= f.label :due_date %>
+    <%= f.date_field :due_date, class: 'form-control' %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+
+    <%= f.label :status %>
+    <%= f.select :status, Task.statuses.keys.to_a, { class: 'form-control', require: true,
+                 include_blank: 'Please select', selected: f.object.status.nil? ? 0 : f.object.status } %>
+    
+    <%= f.label :assignees %>
+    <%= f.select :assignee_ids, User.all.collect { |u| [ u.email, u.id ] }, { class: 'form-control' },
+                 multiple: true %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
