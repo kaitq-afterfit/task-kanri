@@ -1,38 +1,42 @@
-# User.create!(name:  "Administration",
-#              email: "admin@example.com",
-#              password:              "adminuser",
-#              password_confirmation: "adminuser",
-#              is_admin: true)
+Faker::Config.locale = :ja
 
-# Label.create!(name: "bug",
-#               description: "Bugs appeared when developing.")
-# Label.create!(name: "enhancement",
-#               description: "Make functions work better.")
-# Label.create!(name: "design",
-#               description: "Making designs and related documents.")
+User.create!(name:  "Administration",
+             email: "admin@example.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             is_admin: true)
 
-# 10.times do |n|
-#   name  = Faker::Name.name
-#   email = "member-#{n+1}@example.com"
-#   password = "password"
-#   User.create!(name:  name,
-#                email: email,
-#                password:              password,
-#                password_confirmation: password)
-# end
-
-# Creating 6 tasks owned by 3 earliest user
-creators = User.order(:created_at).take(3)
-creators.each do |user|
-  name = "TASK_" + Faker::Lorem.sentence(word_count: 2)
-  description = Faker::Lorem.sentence(word_count: 6)
-  user.tasks.create!(name: name, start_date: 1.week.ago, due_date: 2.days.ago, description: description, status: 3)
-  name = "TASK_" + Faker::Lorem.sentence(word_count: 2)
-  description = Faker::Lorem.sentence(word_count: 6)
-  user.tasks.create!(name: name, start_date: 6.days.ago, due_date: 1.day.ago, description: description, status: 2)
+10.times do |n|
+  name  = Faker::Name.name
+  email = "user-#{n+1}@test.com"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
 end
-# Assigning all tasks to first 5 alphabelt users
-users = User.order(:name).take(5)
+
+4.times do
+  name = Faker::Lorem.sentence(word_count: 2)
+  description = Faker::Lorem.sentence(word_count: 6)
+  Label.create!(name: name, description: description)
+end
+
+# Creating 9 tasks owned by 3 earliest user
+owners = User.order(:created_at).take(3)
+owners.each do |user|
+  name = Faker::Lorem.sentence(word_count: 3)
+  description = Faker::Lorem.sentence(word_count: 6)
+  user.tasks.create!(name: name, start_date: 1.week.ago, due_date: 3.days.ago, description: description, status: 3)
+  name = Faker::Lorem.sentence(word_count: 2)
+  description = Faker::Lorem.sentence(word_count: 9)
+  user.tasks.create!(name: name, start_date: 4.days.ago, due_date: 2.days.since.to_date, description: description, status: 2)
+  name = Faker::Lorem.sentence(word_count: 1)
+  description = Faker::Lorem.sentence(word_count: 12)
+  user.tasks.create!(name: name, start_date: 3.days.ago, due_date: 3.days.since.to_date, description: description, status: 1)
+end
+# Assigning all tasks to first 5 alphabelt non-admin users
+users = User.where(is_admin: false).order(:name).take(5)
 tasks = Task.all
 tasks.each do |task|
   users.each do |user|

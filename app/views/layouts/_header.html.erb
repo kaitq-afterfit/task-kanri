@@ -5,10 +5,12 @@
         <%= link_to (content_tag(:button, content_tag(:i, '', class: 'fas fa-home fa-lg'), class: 'btn')), root_path %>
       </div>
       <div class="search-form-wrapper">
-        <%= search_form_for @q, id: 'search-form' do |f| %>
-          <%= f.text_field :name_cont, id: "search-input", placeholder: 'Search by name here ...' %>
-          <%= button_tag type: "submit", id: "search-submit" do %>
-            <i class="fa fa-search"></i>
+        <% if user_signed_in? %>
+          <%= search_form_for @q, id: 'search-form' do |f| %>
+            <%= f.text_field :name_cont, id: "search-input", placeholder: 'Search by name here ...' %>
+            <%= button_tag type: "submit", id: "search-submit" do %>
+              <i class="fa fa-search"></i>
+            <% end %>
           <% end %>
         <% end %>
       </div>
