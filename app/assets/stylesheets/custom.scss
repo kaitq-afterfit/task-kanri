@@ -259,15 +259,11 @@ BODY SECTION STYLES
   a {
     text-decoration: none;
     color: $gray-darker;
-    &:hover {
-      .task-name {
-        font-weight: bold;
-      }
-    }
   }
   &:hover {
     .task-block {
       background-color: rgba(252, 253, 254, 0.75);
+      font-weight: bold;
     }
   }
 }
