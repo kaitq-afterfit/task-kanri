@@ -8,6 +8,7 @@
             <% @todo_tasks.each do |task| %>
               <li class="list-items">
                 <%= link_to '#', data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                  <input type='hidden' class='t_id' value="<%= task.id %>">
                   <div class="task-block" id="to-do-task_<%= task.id %>">
                     <div class="task-name-block">
                       <div class="task-name"><%= task.name %></div>
@@ -19,7 +20,19 @@
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">
-                        <div class="task-date"><%= task.due_date.strftime("%e %b") %></div>
+                        <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
+                          <div class="task-date passed-due-date">
+                            <%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
+                          <div class="task-date nearly-due-date">
+                            <%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% else %>
+                          <div class="task-date">
+                            <span><%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% end %>
                         <div class="task-labels">
                           <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
                           <span><small><%= task.labels.count %></small></span>
@@ -54,6 +67,7 @@
             <% @doing_tasks.each do |task| %>
               <li class="list-items">
                 <%= link_to '#', data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                  <input type='hidden' class='t_id' value="<%= task.id %>">
                   <div class="task-block" id="doing-task_<%= task.id %>">
                     <div class="task-name-block">
                       <div class="task-name"><%= task.name %></div>
@@ -65,7 +79,19 @@
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">
-                        <div class="task-date"><%= task.due_date.strftime("%e %b") %></div>
+                        <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
+                          <div class="task-date passed-due-date">
+                            <%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
+                          <div class="task-date nearly-due-date">
+                            <%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% else %>
+                          <div class="task-date">
+                            <span><%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% end %>
                         <div class="task-labels">
                           <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
                           <span><small><%= task.labels.count %></small></span>
@@ -92,6 +118,7 @@
             <% @done_tasks.each do |task| %>
               <li class="list-items">
                 <%= link_to task_path(task), data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                  <input type='hidden' class='t_id' value="<%= task.id %>">
                   <div class="task-block" id="done-task_<%= task.id %>">
                     <div class="task-name-block">
                       <div class="task-name"><%= task.name %></div>
@@ -103,7 +130,9 @@
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">
-                        <div class="task-date"><%= task.due_date.strftime("%e %b") %></div>
+                        <div class="task-date">
+                          <span><%= task.due_date.strftime("%e %b") %></span>
+                        </div>
                         <div class="task-labels">
                           <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
                           <span><small><%= task.labels.count %></small></span>

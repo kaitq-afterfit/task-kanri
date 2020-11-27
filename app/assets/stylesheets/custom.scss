@@ -198,6 +198,11 @@ BODY SECTION STYLES
   white-space: nowrap;
   background-color: #e2e4e6;
   border-radius: 5px;
+  #done {
+    .task-date {
+      background-color: #61bd4f;
+    }
+  }
 }
 
 .tasks-list-heading {
@@ -317,6 +322,12 @@ BODY SECTION STYLES
     .task-labels {
       margin-left: 5px;
     }
+    .nearly-due-date {
+      background-color: orange;
+    }
+    .passed-due-date {
+      background-color: red;
+    }
   }
 }
 
@@ -333,7 +344,7 @@ BODY SECTION STYLES
 .task-date {
   font-size: 10px;
   padding: 2px 8px 3px 8px;
-  background-color: #61bd4f;
+  background-color: cornflowerblue;
   color: #fff;
   display: inline-block;
   border-radius: 5px;

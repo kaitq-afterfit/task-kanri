@@ -39,7 +39,7 @@
           <div class="text-label">Labels list</div>
           <div>
             <% task.labels.each do |label| %>
-              <%= label.name %> * 
+              <span class="badge"><%= label.name %></span>
             <% end %>
           </div>
         </div>

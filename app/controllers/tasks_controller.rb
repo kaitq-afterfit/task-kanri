@@ -45,7 +45,19 @@ class TasksController < ApplicationController
       flash[:success] = "Task deleted successfully!"
       redirect_back(fallback_location: tasks_url)
     else
-      flash.now[:danger] = "Task deleted fail!"
+      flash.now[:danger] = "Task delete failed!"
+      render 'index'
+    end
+  end
+
+  def change_status
+    @task = Task.find(params[:t_id])
+    prev_status = @task.status
+    if @task.update_attributes(status: params[:t_des_status])
+      flash[:success] = "Task {#{@task.name}} status has changed from <#{prev_status}> to <#{@task.status}>"
+      redirect_to tasks_url
+    else
+      flash.now[:danger] = "Task status update failed!"
       render 'index'
     end
   end
