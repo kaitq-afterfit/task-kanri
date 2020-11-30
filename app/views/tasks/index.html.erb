@@ -22,11 +22,11 @@
                       <div class="task-detail">
                         <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
                           <div class="task-date passed-due-date">
-                            <%= task.due_date.strftime("%e %b") %></span>
+                            <span><%= task.due_date.strftime("%e %b") %></span>
                           </div>
                         <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
                           <div class="task-date nearly-due-date">
-                            <%= task.due_date.strftime("%e %b") %></span>
+                            <span><%= task.due_date.strftime("%e %b") %></span>
                           </div>
                         <% else %>
                           <div class="task-date">
@@ -81,11 +81,11 @@
                       <div class="task-detail">
                         <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
                           <div class="task-date passed-due-date">
-                            <%= task.due_date.strftime("%e %b") %></span>
+                            <span><%= task.due_date.strftime("%e %b") %></span>
                           </div>
                         <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
                           <div class="task-date nearly-due-date">
-                            <%= task.due_date.strftime("%e %b") %></span>
+                            <span><%= task.due_date.strftime("%e %b") %></span>
                           </div>
                         <% else %>
                           <div class="task-date">
@@ -130,9 +130,19 @@
                     </div>
                     <div class="task-info-block">
                       <div class="task-detail">
-                        <div class="task-date">
-                          <span><%= task.due_date.strftime("%e %b") %></span>
-                        </div>
+                        <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
+                          <div class="task-date passed-due-date">
+                            <span><%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
+                          <div class="task-date nearly-due-date">
+                            <span><%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% else %>
+                          <div class="task-date">
+                            <span><%= task.due_date.strftime("%e %b") %></span>
+                          </div>
+                        <% end %>
                         <div class="task-labels">
                           <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
                           <span><small><%= task.labels.count %></small></span>

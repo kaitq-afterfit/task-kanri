@@ -53,12 +53,13 @@ class TasksController < ApplicationController
   def change_status
     @task = Task.find(params[:t_id])
     prev_status = @task.status
-    if @task.update_attributes(status: params[:t_des_status])
-      flash[:success] = "Task {#{@task.name}} status has changed from <#{prev_status}> to <#{@task.status}>"
-      redirect_to tasks_url
-    else
-      flash.now[:danger] = "Task status update failed!"
-      render 'index'
+    respond_to do |format|
+      if @task.update_attributes(status: params[:t_des_status])
+        format.js
+      else
+        format.html { render action: "index" }
+        format.js
+      end
     end
   end
 

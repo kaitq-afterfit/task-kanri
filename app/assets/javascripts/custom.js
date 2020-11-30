@@ -25,6 +25,12 @@ $(function () {
         beforeSend: function(xhr) {
           xhr.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'))
         },
+        success: function() {
+          $("#task-" + task_id + "-status-content").text(task_destination_status);
+        },
+        error: function(xhr, status, err) {
+          console.error(status, err.toString());
+        }
       });
     },
     revert: 100,
@@ -69,6 +75,12 @@ $(function () {
         beforeSend: function(xhr) {
           xhr.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'))
         },
+        success: function() {
+          $("#task-" + task_id + "-status-content").text(task_destination_status);
+        },
+        error: function(xhr, status, err) {
+          console.error(status, err.toString());
+        }
       });
     },
     revert: 100,
@@ -113,6 +125,12 @@ $(function () {
         beforeSend: function(xhr) {
           xhr.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'))
         },
+        success: function() {
+          $("#task-" + task_id + "-status-content").text(task_destination_status);
+        },
+        error: function(xhr, status, err) {
+          console.error(status, err.toString());
+        }
       });
     },
     revert: 100,
