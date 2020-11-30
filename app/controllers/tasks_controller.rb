@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_owner, only: [:edit, :update, :destroy]
   before_action :users_list, only: [:new, :edit]
-  before_action :find_task_by_id, only: [:edit, :update, :destroy]
+  before_action :find_task_by_id, only: [:show, :edit, :update, :destroy]
   before_action :set_search
 
   def index
@@ -14,11 +14,14 @@ class TasksController < ApplicationController
     @done_tasks = @tasks.where(status: Task.statuses[:done])
   end
 
+  def show; end
+
   def new
     @task = Task.new
   end
 
   def create
+    puts @task
     @task = Task.new(task_params)
     @task.user = current_user
     if @task.save
@@ -55,14 +58,13 @@ class TasksController < ApplicationController
     prev_status = @task.status
     respond_to do |format|
       if @task.update_attributes(status: params[:t_des_status])
-        format.js
+        format.json { render json: @task, status: 200, location: @task }
       else
-        format.html { render action: "index" }
-        format.js
+        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
-
+  
   private
 
     def task_params

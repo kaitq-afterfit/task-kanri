@@ -1,0 +1,32 @@
+<div class="task-name-block">
+  <div class="task-name"><%= task.name %></div>
+  <% if current_user == task.user %>
+    <div class="task-edit">
+      <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
+    </div>
+  <% end %>
+</div>
+<div class="task-info-block">
+  <div class="task-detail">
+    <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
+      <div class="task-date passed-due-date">
+        <span><%= task.due_date.strftime("%e %b") %></span>
+      </div>
+    <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
+      <div class="task-date nearly-due-date">
+        <span><%= task.due_date.strftime("%e %b") %></span>
+      </div>
+    <% else %>
+      <div class="task-date">
+        <span><%= task.due_date.strftime("%e %b") %></span>
+      </div>
+    <% end %>
+    <div class="task-labels">
+      <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
+      <span><small><%= task.labels.count %></small></span>
+    </div>
+  </div>
+  <div class="task-owner">
+    <div class="user-email"><%= task.user.email %></div>
+  </div>
+</div>

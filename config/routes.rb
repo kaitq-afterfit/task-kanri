@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:index, :show, :destroy]
-  resources :tasks, except: :show do
+  resources :tasks do
     patch 'change_status', on: :collection
   end
   resources :labels

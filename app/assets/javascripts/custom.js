@@ -14,7 +14,6 @@ $(function () {
       task_id = $(ui.item).find(".t_id").val();
       task_destination_status = $(ui.item).parents(".tasks-list-body").attr("id");
       params = { t_id: task_id, t_des_status: task_destination_status };
-      console.log(params);
       $.ajax({
         url: "/tasks/change_status",
         method: "PATCH",
@@ -64,7 +63,6 @@ $(function () {
       task_id = $(ui.item).find(".t_id").val();
       task_destination_status = $(ui.item).parents(".tasks-list-body").attr("id");
       params = { t_id: task_id, t_des_status: task_destination_status };
-      console.log(params);
       $.ajax({
         url: "/tasks/change_status",
         method: "PATCH",
@@ -114,7 +112,6 @@ $(function () {
       task_id = $(ui.item).find(".t_id").val();
       task_destination_status = $(ui.item).parents(".tasks-list-body").attr("id");
       params = { t_id: task_id, t_des_status: task_destination_status };
-      console.log(params);
       $.ajax({
         url: "/tasks/change_status",
         method: "PATCH",
@@ -125,7 +122,7 @@ $(function () {
         beforeSend: function(xhr) {
           xhr.setRequestHeader("X-CSRF-Token", $('meta[name="csrf-token"]').attr('content'))
         },
-        success: function() {
+        success: function(data) {
           $("#task-" + task_id + "-status-content").text(task_destination_status);
         },
         error: function(xhr, status, err) {

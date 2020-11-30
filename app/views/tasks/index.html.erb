@@ -7,44 +7,12 @@
           <% unless @todo_tasks.empty? %>
             <% @todo_tasks.each do |task| %>
               <li class="list-items">
-                <%= link_to '#', data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                <%= link_to task_path(task), remote: true do %>
                   <input type='hidden' class='t_id' value="<%= task.id %>">
-                  <div class="task-block" id="to-do-task_<%= task.id %>">
-                    <div class="task-name-block">
-                      <div class="task-name"><%= task.name %></div>
-                      <% if current_user == task.user %>
-                        <div class="task-edit">
-                          <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <div class="task-info-block">
-                      <div class="task-detail">
-                        <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
-                          <div class="task-date passed-due-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
-                          <div class="task-date nearly-due-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% else %>
-                          <div class="task-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% end %>
-                        <div class="task-labels">
-                          <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
-                          <span><small><%= task.labels.count %></small></span>
-                        </div>
-                      </div>
-                      <div class="task-owner">
-                        <div class="user-email"><%= task.user.email %></div>
-                      </div>
-                    </div>
+                  <div class="task-block" id="doing-task_<%= task.id %>">
+                    <%= render partial: 'task_detail', locals: { task: task } %>
                   </div>
                 <% end %>
-                <%= render partial: 'show_modal', locals: { task: task } %>
               </li>
             <% end %>
           <% end %>
@@ -66,44 +34,12 @@
           <% unless @doing_tasks.empty? %>
             <% @doing_tasks.each do |task| %>
               <li class="list-items">
-                <%= link_to '#', data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                <%= link_to task_path(task), remote: true do %>
                   <input type='hidden' class='t_id' value="<%= task.id %>">
                   <div class="task-block" id="doing-task_<%= task.id %>">
-                    <div class="task-name-block">
-                      <div class="task-name"><%= task.name %></div>
-                      <% if current_user == task.user %>
-                        <div class="task-edit">
-                          <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <div class="task-info-block">
-                      <div class="task-detail">
-                        <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
-                          <div class="task-date passed-due-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
-                          <div class="task-date nearly-due-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% else %>
-                          <div class="task-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% end %>
-                        <div class="task-labels">
-                          <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
-                          <span><small><%= task.labels.count %></small></span>
-                        </div>
-                      </div>
-                      <div class="task-owner">
-                        <div class="user-email"><%= task.user.email %></div>
-                      </div>
-                    </div>
+                    <%= render partial: 'task_detail', locals: { task: task } %>
                   </div>
                 <% end %>
-                <%= render partial: 'show_modal', locals: { task: task } %>
               </li>
             <% end %>
           <% end %>
@@ -117,49 +53,24 @@
           <% unless @done_tasks.empty? %>
             <% @done_tasks.each do |task| %>
               <li class="list-items">
-                <%= link_to task_path(task), data: { toggle: 'modal', target: "#task-#{ task.id }-info-modal" } do %>
+                <%= link_to task_path(task), remote: true do %>
                   <input type='hidden' class='t_id' value="<%= task.id %>">
-                  <div class="task-block" id="done-task_<%= task.id %>">
-                    <div class="task-name-block">
-                      <div class="task-name"><%= task.name %></div>
-                      <% if current_user == task.user %>
-                        <div class="task-edit">
-                          <%= link_to content_tag(:i, '', class: 'fas fa-edit'), edit_task_path(task) %>
-                        </div>
-                      <% end %>
-                    </div>
-                    <div class="task-info-block">
-                      <div class="task-detail">
-                        <% if task.due_date.to_datetime - Time.now.to_datetime <= 0 %>
-                          <div class="task-date passed-due-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% elsif task.due_date.to_datetime - Time.now.to_datetime <= 1 %>
-                          <div class="task-date nearly-due-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% else %>
-                          <div class="task-date">
-                            <span><%= task.due_date.strftime("%e %b") %></span>
-                          </div>
-                        <% end %>
-                        <div class="task-labels">
-                          <i class="fas fa-tags fa-xs" aria-hidden="true"></i>
-                          <span><small><%= task.labels.count %></small></span>
-                        </div>
-                      </div>
-                      <div class="task-owner">
-                        <div class="user-email"><%= task.user.email %></div>
-                      </div>
-                    </div>
+                  <div class="task-block" id="doing-task_<%= task.id %>">
+                    <%= render partial: 'task_detail', locals: { task: task } %>
                   </div>
                 <% end %>
-                <%= render partial: 'show_modal', locals: { task: task } %>
               </li>
             <% end %>
           <% end %>
         </ul>
       </div>
+    </div>
+  </div>
+
+  <!-- MODAL for tasks detail -->
+  <div class="modal fade" id="task-info-modal" tabindex="-1" role="dialog" aria-labelledby="modal-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
     </div>
   </div>
 
