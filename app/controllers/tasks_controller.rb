@@ -86,6 +86,6 @@ class TasksController < ApplicationController
 
     def set_search
       @q = Task.ransack(params[:q])
-      @tasks = @q.result.includes(:labels, :assignees)
+      @tasks = @q.result(distinct: true).includes(:labels, :assignees)
     end
 end
