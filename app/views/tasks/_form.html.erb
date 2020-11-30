@@ -20,6 +20,10 @@
     <%= f.label :assignees %>
     <%= f.select :assignee_ids, User.all.collect { |u| [ u.email, u.id ] }, { class: 'form-control' },
                  multiple: true %>
+    
+    <%= f.label :labels %>
+    <%= f.select :label_ids, Label.all.collect { |l| [ l.name, l.id ] }, { class: 'form-control' },
+                 multiple: true %>
 
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
